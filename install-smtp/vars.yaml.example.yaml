@@ -1,0 +1,36 @@
+# единственный источник правды для инсталлятора
+
+# Базовое
+domain: example.com
+hostname: mail.example.com      # если не указать — инсталлятор подставит mail.<domain>
+ipv4: 1.2.3.4
+
+# Приём входящей почты на 25/tcp
+accept_inbound: true            # true — слушаем 25 и открываем fw; false — только 465/587
+
+# Пользователи (виртуальные ящики Dovecot) — ЛОГИНЫ И ПАРОЛИ НА МЕСТЕ
+users:
+  - login: info@example.com
+    password: "S3cret!"
+  # - login: sales@example.com
+  #   password: "AnotherS3cret!"
+
+# Let's Encrypt
+acme_email: noc@example.com
+
+# DKIM
+dkim_selector: s1               # селектор для 05_dkim.sh
+
+# Beget API для 09_beget_dns.sh
+beget:
+  login: "mybegetlogin"         # не e-mail, именно логин аккаунта Beget
+  password: "xxxxxxxxxxxxxxxx"     # API-токен из панели Beget
+
+# Тонкая настройка 09_beget_dns.sh (всё опционально)
+dns_update:
+  dry_run: false                # true = только показать diff (или добавь флаг --dry-run в CLI)
+  ttl_default: 3600
+  spf_policy: warn              # warn|append — warn: не трогаем существующий SPF; append: аккуратно добавим a:<hostname>
+  msa_state_dir: /var/local/msa
+  msa_manifest: /var/local/msa/manifest.json
+  msa_dkim_txt: /var/local/msa/dkim.txt
