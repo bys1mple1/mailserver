@@ -108,7 +108,6 @@ install -m 0644 "${TMP_VMAPS}" /etc/postfix/virtual_mailbox_maps
 rm -f "${TMP_VMAPS}"
 postmap hash:/etc/postfix/virtual_mailbox_maps
 
-Тумен, [15.11.2025 19:31]
 # ===== master.cf: включаем Postscreen на 25, smtpd как pass, и службы для DNSBL/TLS proxy =====
 postconf -X smtp/inet  true
 postconf -M 'smtp/inet=smtp inet n - y - 1 postscreen'
@@ -194,7 +193,6 @@ postconf -e 'smtp_header_checks=regexp:/etc/postfix/smtp_header_checks'
 # sanity: каталоги сокетов под chroot (обычно их создаёт 05_dkim.sh/08_opendmarc.sh, но продублируем безопасно)
 install -d -m 0750 -o opendkim -g postfix /var/spool/postfix/opendkim  true
 
-Тумен, [15.11.2025 19:31]
 install -d -m 0750 -o opendmarc -g postfix /var/spool/postfix/opendmarc  true
 
 # перечитать конфиг прямо тут (дальше скрипт всё равно перезапускает)
@@ -348,7 +346,6 @@ install -m 0644 "${TMP_VMAPS}" /etc/postfix/virtual_mailbox_maps
 rm -f "${TMP_VMAPS}"
 postmap hash:/etc/postfix/virtual_mailbox_maps
 
-Тумен, [15.11.2025 19:31]
 # ===== master.cf: включаем Postscreen на 25, smtpd как pass, и службы для DNSBL/TLS proxy =====
 postconf -X smtp/inet  true
 postconf -M 'smtp/inet=smtp inet n - y - 1 postscreen'
@@ -434,7 +431,6 @@ postconf -e 'smtp_header_checks=regexp:/etc/postfix/smtp_header_checks'
 # sanity: каталоги сокетов под chroot (обычно их создаёт 05_dkim.sh/08_opendmarc.sh, но продублируем безопасно)
 install -d -m 0750 -o opendkim -g postfix /var/spool/postfix/opendkim  true
 
-Тумен, [15.11.2025 19:31]
 install -d -m 0750 -o opendmarc -g postfix /var/spool/postfix/opendmarc  true
 
 # перечитать конфиг прямо тут (дальше скрипт всё равно перезапускает)
